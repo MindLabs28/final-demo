@@ -1,12 +1,13 @@
 import Nav from "../Navbar/Nav"
 import SlideIn from "../scroll components/SlideIn"
+import { motion } from "framer-motion"
 
 const Home = () => {
   return (
     <main className="pt-[72px]">
       <Nav />
-      <div className="bg-mainBg h-screen bg-no-repeat bg-cover bg-center  relative isolate ">
-        <div className="absolute inset-0 bg-[rgb(0,0,0,0.4)] z-[-1] flex flex-col" />
+      <div className="bg-mainBg h-screen bg-no-repeat bg-cover bg-center  relative isolate flex flex-col justify-between ">
+        <div className="absolute inset-0 bg-[rgb(0,0,0,0.4)] z-[-1] " />
         {/* <div className="pl-7 pt-10"> */}
         <SlideIn
           side="left"
@@ -28,6 +29,30 @@ const Home = () => {
             Get Started
           </button>
         </SlideIn>
+
+        <motion.div>
+          <h1 className="text-white font-bold text-4xl">Our Work</h1>
+          <svg
+            height={130}
+            width={130}
+            className="rotate-[-90deg]"
+          >
+            <motion.circle
+              cx={75}
+              cy={75}
+              r={50}
+              stroke={"white"}
+              strokeWidth={3}
+              fill={"transparent"}
+              initial={{
+                pathLength: 0,
+              }}
+              whileHover={{
+                pathLength: 1,
+              }}
+            />
+          </svg>
+        </motion.div>
       </div>
       {/* </div> */}
     </main>
