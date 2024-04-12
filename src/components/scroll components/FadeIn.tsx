@@ -1,24 +1,19 @@
-import { motion } from "framer-motion"
 import React from "react"
+import { motion } from "framer-motion"
 
-
-const SlideIn = ({
+const FadeIn = ({
   children,
-  side,
+  from,
   className,
 }: {
   children: React.ReactNode
-  side: "left" | "right"
+  from: "top" | "bottom"
   className?: string
 }) => {
   return (
     <motion.section
-      className={className}
-      initial={{ x: side === "left" ? -100 : 100, opacity: 0 }}
-      whileInView={{
-        x: 0,
-        opacity: 1,
-      }}
+      initial={{ opacity: 0, y: from === "top" ? -60 : 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
       transition={{
         duration: 0.5,
         delay: 0.4,
@@ -30,4 +25,4 @@ const SlideIn = ({
   )
 }
 
-export default SlideIn
+export default FadeIn

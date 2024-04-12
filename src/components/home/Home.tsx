@@ -1,12 +1,13 @@
 import Nav from "../Navbar/Nav"
 import SlideIn from "../scroll components/SlideIn"
-import { motion } from "framer-motion"
+import Card from "../card/Card"
+import { GiCarWheel } from "react-icons/gi"
 
 const Home = () => {
   return (
     <main className="pt-[72px]">
       <Nav />
-      <div className="bg-mainBg h-screen bg-no-repeat bg-cover bg-center  relative isolate flex flex-col justify-between ">
+      <div className="bg-mainBg h-screen bg-no-repeat bg-cover bg-center  relative isolate flex flex-col">
         <div className="absolute inset-0 bg-[rgb(0,0,0,0.4)] z-[-1] " />
         {/* <div className="pl-7 pt-10"> */}
         <SlideIn
@@ -29,32 +30,30 @@ const Home = () => {
             Get Started
           </button>
         </SlideIn>
-
-        <motion.div>
-          <h1 className="text-white font-bold text-4xl">Our Work</h1>
-          <svg
-            height={130}
-            width={130}
-            className="rotate-[-90deg]"
-          >
-            <motion.circle
-              cx={75}
-              cy={75}
-              r={50}
-              stroke={"white"}
-              strokeWidth={3}
-              fill={"transparent"}
-              initial={{
-                pathLength: 0,
-              }}
-              whileHover={{
-                pathLength: 1,
-              }}
-            />
-          </svg>
-        </motion.div>
       </div>
-      {/* </div> */}
+      <section
+        className="bg-black text-primary md:px-[5rem]"
+        id="services"
+      >
+        <SlideIn side="left">
+          <h2 className="font-bold text-4xl pt-5 pb-[2.5rem]">
+            What We Provide
+          </h2>
+        </SlideIn>
+        <div>
+          <Card
+            src="https://github.com/pathikcomp/images/blob/main/truck-2.jpg?raw=true"
+            title="Truck Wash"
+          >
+            <ul>
+              <li>
+                <GiCarWheel /> truck wash
+              </li>
+              <li>truck clean</li>
+            </ul>
+          </Card>
+        </div>
+      </section>
     </main>
   )
 }
