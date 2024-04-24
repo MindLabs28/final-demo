@@ -3,12 +3,10 @@ import { motion } from "framer-motion"
 
 const FadeIn = ({
   children,
-  from,
-  className,
+  from
 }: {
   children: React.ReactNode
   from: "top" | "bottom"
-  className?: string
 }) => {
   return (
     <motion.section
