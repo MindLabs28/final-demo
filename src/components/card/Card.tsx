@@ -42,26 +42,7 @@ const Card = ({
         }}
         transition={{ delay: 0.1 }}
         whileHover={"show"}
-        whileTap={"show"}
       >
-        {/* <motion.div
-        className="bg-red-400 rounded-lg absolute top-[0%] left-[50%] translate-x-[-50%] translate-y-[-1.5rem] shadow-2xl px-5 font-bold max-w-[14rem] text-white"
-        initial={{ opacity: 0 }}
-        variants={{
-          show: {
-            opacity: 1,
-          },
-        }}
-      >
-        {description}
-        <div
-          style={{
-            clipPath: "path('m 0 0 c 10 12 4 12 15 0')",
-          }}
-          className="aspect-square h-[15px] bg-red-400 absolute top-[95%] left-[50%] translate-x-[-50%]"
-        />
-      </motion.div> */}
-
         <img
           src={src}
           className={`w-full aspect-[10/14] object-cover object-top rounded-xl ${className}`}

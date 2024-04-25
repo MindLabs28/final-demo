@@ -1,13 +1,31 @@
 import Nav from "../Navbar/Nav"
 import SlideIn from "../scroll components/SlideIn"
 import Card from "../card/Card"
+import Loading from "../Loading/Loading"
+import { useEffect, useState } from "react"
 
+const img = new Image()
 const Home = () => {
-  return (
+  // const imgRef = useRef<HTMLImageElement>(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    ;(async () => {
+      img.src = "https://github.com/pathikcomp/images/blob/main/bg.jpg?raw=true"
+      img.onload = async () => {
+        await new Promise((resolve) => setTimeout(resolve, 2000))
+        setLoading(false)
+      }
+    })()
+  }, [])
+  return loading ? (
+    <Loading />
+  ) : (
     <main className="pt-[72px] bg-black">
       <Nav />
       <div className="bg-mainBg h-screen bg-no-repeat bg-cover bg-center  relative isolate flex flex-col">
         <div className="absolute inset-0 bg-[rgb(0,0,0,0.4)] z-[-1] " />
+
         {/* <div className="pl-7 pt-10"> */}
         <SlideIn
           side="left"
