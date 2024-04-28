@@ -8,10 +8,10 @@ const StyledTooltip = styled(({ className, ...props }: TooltipProps) => (
   />
 ))(() => ({
   [`& .${tooltipClasses.tooltip}`]: {
-    backgroundColor: "rgb(248 113 113 / 1) ",
+    backgroundColor: "dodgerblue",
   },
   [`& .${tooltipClasses.arrow}`]: {
-    color: "rgb(248 113 113 / 1)",
+    color: "dodgerblue",
   },
 }))
 
@@ -35,7 +35,7 @@ const Card = ({
       placement="top"
     >
       <motion.div
-        className="w-[14rem] space-y-5 relative cursor-pointer"
+        className="w-[16rem] space-y-5 relative cursor-pointer"
         initial={{ scale: 0 }}
         whileInView={{
           scale: 1,

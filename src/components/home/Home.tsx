@@ -2,12 +2,21 @@ import Nav from "../Navbar/Nav"
 import SlideIn from "../scroll components/SlideIn"
 import Card from "../card/Card"
 import Loading from "../Loading/Loading"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+import { FaPeopleGroup } from "react-icons/fa6"
+import { LuHeartHandshake } from "react-icons/lu"
+import { TbClock24 } from "react-icons/tb"
+import { MdRocketLaunch } from "react-icons/md"
+import FadeIn from "../scroll components/FadeIn"
+import { FiPhoneCall } from "react-icons/fi"
+import { CgMail } from "react-icons/cg"
+import { motion } from "framer-motion"
 
 const img = new Image()
 const Home = () => {
-  // const imgRef = useRef<HTMLImageElement>(null)
   const [loading, setLoading] = useState(true)
+  const servicesRef = useRef<HTMLDivElement>(null)
+  const contactUsRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     ;(async () => {
@@ -18,11 +27,19 @@ const Home = () => {
       }
     })()
   }, [])
+
+  const handleScroll = (id: "services" | "contactUs") => {
+    if (id === "services" && servicesRef.current) {
+      servicesRef.current.scrollIntoView({ behavior: "smooth" })
+    } else if (contactUsRef.current) {
+      contactUsRef.current.scrollIntoView({ behavior: "smooth" })
+    }
+  }
   return loading ? (
     <Loading />
   ) : (
     <main className="pt-[72px] bg-black">
-      <Nav />
+      <Nav handleScroll={handleScroll} />
       <div className="bg-mainBg h-screen bg-no-repeat bg-cover bg-center  relative isolate flex flex-col">
         <div className="absolute inset-0 bg-[rgb(0,0,0,0.4)] z-[-1] " />
 
@@ -48,12 +65,15 @@ const Home = () => {
           </button>
         </SlideIn>
       </div>
-      <section
-        className=" text-primary md:px-[5rem]"
+      <div
+        className=" text-white md:px-[5rem]"
         id="services"
+        ref={servicesRef}
       >
         <SlideIn side="left">
-          <h2 className="font-bold text-5xl pt-5 pb-[2.5rem]">Our Services:</h2>
+          <h2 className="font-bold text-4xl pt-5 pb-[2.5rem] uppercase">
+            Our Services
+          </h2>
         </SlideIn>
         <div className=" flex flex-wrap gap-8 justify-center">
           <Card
@@ -90,26 +110,91 @@ const Home = () => {
             description="removing spray paints from any wall"
           />
           <Card
-            src="https://github.com/pathikcomp/images/blob/main/water.jpeg?raw=true"
+            src="https://github.com/pathikcomp/images/blob/main/2147632830.jpg?raw=true"
             title="Hot Water Supply"
             className="object-[70%,50%]"
             description="we supply hot water through our trucks"
           />
           <Card
-            src="https://github.com/pathikcomp/images/blob/main/IMG-20240421-WA0008.jpg?raw=true"
+            src="https://github.com/pathikcomp/images/blob/main/2150454565.jpg?raw=true"
             title="Commercial Cleaning"
             className="object-[0%,100%]"
             description="cleaning any commercial spaces"
           />
         </div>
-      </section>
-      <section className="mt-5 md:px-[5rem]">
+      </div>
+      <div
+        className="mt-5 md:px-[5rem]  text-white relative isolate pb-10"
+        ref={contactUsRef}
+      >
+        <img
+          src="https://github.com/pathikcomp/images/blob/main/2150454565.jpg?raw=true"
+          className="absolute inset-0 z-[-2] h-full object-cover w-full"
+        />
+        <div className="z-[-1] bg-[rgba(0,0,0,0.54)] absolute inset-0" />
         <SlideIn side="left">
-          <h2 className="text-primary font-bold text-5xl pt-5 pb-[2.5rem]">
-            Contact Us:
+          <h2 className="font-bold text-4xl pt-5 pb-[0.7rem] uppercase text-center text-white">
+            why choose Us ?
           </h2>
         </SlideIn>
-      </section>
+        <FadeIn from="top">
+          <h3 className="text-3xl text-center pb-[0.7rem] text-[yellow] font-semibold">
+            20+ Years of Superior Cleaning
+          </h3>
+        </FadeIn>
+        <motion.div
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
+          transition={{ delay: 0.4, bounce: 0, duration: 0.5 }}
+        >
+          <h4 className="text-center pb-[2rem] italic text-lg ">
+            Trust our company for cleaning and washing services because of our
+            commitment to customer satisfaction, backed by years of expertise
+            and a proven track record.
+          </h4>
+        </motion.div>
+        <section className="flex justify-center gap-7 flex-wrap lg:gap-[4rem]">
+          <div className="flex justify-center flex-col items-center gap-1">
+            <FaPeopleGroup className="text-white text-[5rem] bg-primary rounded-full p-4" />
+            <h3 className=" text-lg font-semibold">Expert Employees</h3>
+          </div>
+          <div className="flex justify-center flex-col items-center gap-1">
+            <LuHeartHandshake className="text-white text-[5rem] bg-red-500 rounded-full p-4" />
+            <h3 className="text-lg font-semibold">Customers Satisfaction</h3>
+          </div>
+          <div className="flex justify-center flex-col items-center gap-1">
+            <TbClock24 className="text-white text-[5rem] bg-secondary rounded-full p-4" />
+            <h3 className="text-lg font-semibold">24&#215;7 Services</h3>
+          </div>
+          <div className="flex justify-center flex-col items-center gap-1">
+            <MdRocketLaunch className="text-white text-[5rem] bg-[rgb(20,184,166)] rounded-full p-[1.2rem]" />
+            <h3 className="text-lg font-semibold">Customers Satisfaction</h3>
+          </div>
+        </section>
+      </div>
+      <div
+        className="mt-5 md:px-[5rem] pb-8"
+        ref={contactUsRef}
+      >
+        <SlideIn side="left">
+          <h2 className="text-white font-bold text-2xl pt-5 pb-[1.5rem] uppercase">
+            Contact Us
+          </h2>
+        </SlideIn>
+        <section className="space-y-2">
+          <div className="text-white flex text-[1rem] items-center">
+            <FiPhoneCall className="mr-3" /> +1 (905) 783-7848
+          </div>
+          <div
+            className="text-white flex text-[1rem] items-center"
+            onClick={() => {
+              window.location.href = "mailto:mindlabs28@gmail.com"
+            }}
+          >
+            <CgMail className="mr-3 text-lg" /> mindlabs28@gmail.com
+          </div>
+        </section>
+      </div>
     </main>
   )
 }

@@ -4,7 +4,11 @@ import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import { Drawer } from "@mui/material"
 
-const Nav = () => {
+const Nav = ({
+  handleScroll,
+}: {
+  handleScroll: (id: "services" | "contactUs") => void
+}) => {
   const [open, setOpen] = useState(false)
   return (
     <nav className="bg-gradient-to-r from-primary to-purple-400 py-2 flex justify-between items-center lg:px-20 fixed top-0 w-full z-20">
@@ -75,16 +79,16 @@ const Nav = () => {
       </div>
       <div className="gap-3 pr-3 hidden md:flex">
         <LinkBtn
-          title="Log In"
-          to="/login"
-        />
-        <LinkBtn
           title="Services"
-          to="#services"
+          handleScroll={() => {
+            handleScroll("services")
+          }}
         />
         <LinkBtn
           title="Contact Us"
-          to="#contactUs"
+          handleScroll={() => {
+            handleScroll("contactUs")
+          }}
         />
       </div>
       <button
@@ -125,32 +129,33 @@ const Nav = () => {
         anchor="right"
       >
         <div className="w-[10rem]">
-          <section className="bg-purple-400 rounded-b-xl min-h-[6rem] relative grid place-items-center ">
+          <button
+            className=" text-white bg-red-500 aspect-square rounded-full h-[20px] text-sm ml-auto mb-6 block relative top-3 right-4"
+            onClick={() => {
+              setOpen(false)
+            }}
+          >
+            X
+          </button>
+          <section className="flex flex-col pt-5 items-center gap-3 mx-6">
             <button
-              className="absolute top-2 right-3 text-white bg-red-500 aspect-square rounded-full h-[20px] text-sm"
+              className="bg-purple-400 text-white px-3 rounded-md font-bold shadow-lg w-full text-center"
               onClick={() => {
                 setOpen(false)
+                handleScroll("services")
               }}
             >
-              X
+              Services
             </button>
-            <button className="bg-white text-primary rounded-lg px-5 font-semibold">
-              login
-            </button>
-          </section>
-          <section className="flex flex-col pt-5 items-center gap-3 mx-6">
-            <Link
-              to="#aboutUs"
+            <button
               className="bg-purple-400 text-white px-3 rounded-md font-bold shadow-lg w-full text-center"
-            >
-              About Us
-            </Link>
-            <Link
-              to="#contactUs"
-              className="bg-purple-400 text-white px-3 rounded-md font-bold shadow-lg w-full text-center"
+              onClick={() => {
+                setOpen(false)
+                handleScroll("contactUs")
+              }}
             >
               Contact Us
-            </Link>
+            </button>
           </section>
         </div>
       </Drawer>
@@ -160,18 +165,24 @@ const Nav = () => {
 
 export default Nav
 
-const LinkBtn = ({ to, title }: { to: string; title: string }) => {
+const LinkBtn = ({
+  handleScroll,
+  title,
+}: {
+  handleScroll: () => void
+  title: string
+}) => {
   return (
     <motion.div
       whileHover={"hover"}
       className="relative p-2  cursor-pointer isolate "
     >
-      <Link
-        to={to}
+      <button
         className="text-white font-bold "
+        onClick={handleScroll}
       >
         {title}
-      </Link>
+      </button>
       <motion.span
         className="border-solid border-yellow-300 inset-0 top-0 left-0 border-b-4 absolute z-[-1]"
         initial={{
