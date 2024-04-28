@@ -1,7 +1,7 @@
 import { useState } from "react"
 import src from "../../assets/logo.svg"
 import { motion } from "framer-motion"
-import { Link } from "react-router-dom"
+
 import { Drawer } from "@mui/material"
 
 const Nav = ({
