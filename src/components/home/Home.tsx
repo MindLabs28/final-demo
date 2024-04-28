@@ -168,7 +168,7 @@ const Home = () => {
           </div>
           <div className="flex justify-center flex-col items-center gap-1">
             <MdRocketLaunch className="text-white text-[5rem] bg-[rgb(20,184,166)] rounded-full p-[1.2rem]" />
-            <h3 className="text-lg font-semibold">Customers Satisfaction</h3>
+            <h3 className="text-lg font-semibold">Quick Service</h3>
           </div>
         </section>
       </div>
