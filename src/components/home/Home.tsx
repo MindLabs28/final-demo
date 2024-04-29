@@ -182,21 +182,26 @@ const Home = () => {
           </h2>
         </SlideIn>
         <section className="space-y-2">
-          <div
-            className="text-white flex text-[1rem] items-center"
-            onClick={() => {
-              window.location.href = "tel:+1(905)783-7848"
-            }}
-          >
-            <FiPhoneCall className="mr-3" /> +1 (905) 783-7848
+          <div className="text-white flex text-[1rem] items-center cursor-pointer gap-3">
+            <div
+              className="flex items-center"
+              onClick={() => {
+                window.location.href = "tel:+1(416)804-9288"
+              }}
+            >
+              <FiPhoneCall className="mr-3" /> +1 (416) 804-9288
+            </div>
           </div>
-          <div
-            className="text-white flex text-[1rem] items-center"
-            onClick={() => {
-              window.location.href = "mailto:mindlabs28@gmail.com"
-            }}
-          >
-            <CgMail className="mr-3 text-lg" /> mindlabs28@gmail.com
+          <div className="text-white flex text-[1rem] items-center cursor-pointer gap-3">
+            <div
+              className="flex items-center"
+              onClick={() => {
+                window.location.href = "mailto:Ontario.rise.n.shine@hotmail.com"
+              }}
+            >
+              <CgMail className="mr-3 text-lg" />{" "}
+              Ontario.rise.n.shine@hotmail.com
+            </div>
           </div>
         </section>
       </div>
